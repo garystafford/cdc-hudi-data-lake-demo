@@ -1,0 +1,31 @@
+{
+  "name": "source_connector_postgres_kafka_avro_tickit",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.dbname": "tickit",
+    "database.hostname": "${secretManager:demo/postgres:host}",
+    "database.password": "${secretManager:demo/postgres:password}",
+    "database.port": 5432,
+    "database.server.name": "tickit",
+    "database.user": "${secretManager:demo/postgres:username}",
+    "decimal.handling.mode": "double",
+    "key.converter": "io.apicurio.registry.utils.converter.AvroConverter",
+    "key.converter.apicurio.registry.auto-register": "true",
+    "key.converter.apicurio.registry.find-latest": "true",
+    "key.converter.apicurio.registry.url": "http://localhost:8080/apis/registry/v2",
+    "plugin.name": "pgoutput",
+    "schema.name.adjustment.mode": "avro",
+    "table.include.list": "ems.category,ems.event,ems.venue",
+    "tasks.max": 1,
+    "topic.prefix": "tickit",
+    "transforms": "unwrap",
+    "transforms.unwrap.add.fields": "name,op,db,table,schema,lsn,source.ts_ms",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    "transforms.unwrap.drop.tombstones": "true",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "value.converter": "io.apicurio.registry.utils.converter.AvroConverter",
+    "value.converter.apicurio.registry.auto-register": "true",
+    "value.converter.apicurio.registry.find-latest": "true",
+    "value.converter.apicurio.registry.url": "http://localhost:8080/apis/registry/v2"
+  }
+}

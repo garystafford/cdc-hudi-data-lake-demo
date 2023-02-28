@@ -1,0 +1,33 @@
+{
+  "name": "source_connector_mssql_kafka_avro_tickit",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "database.encrypt": "false",
+    "database.hostname": "${secretManager:demo/mssql:host}",
+    "database.names": "tickit",
+    "database.password": "${secretManager:demo/mssql:password}",
+    "database.port": 1433,
+    "database.user": "${secretManager:demo/mssql:username}",
+    "decimal.handling.mode": "double",
+    "include.schema.changes": "true",
+    "key.converter": "io.apicurio.registry.utils.converter.AvroConverter",
+    "key.converter.apicurio.registry.auto-register": "true",
+    "key.converter.apicurio.registry.find-latest": "true",
+    "key.converter.apicurio.registry.url": "http://localhost:8080/apis/registry/v2",
+    "schema.name.adjustment.mode": "avro",
+    "schema.history.internal.kafka.bootstrap.servers": "${secretManager:demo/mssql:bootstrap.servers}",
+    "schema.history.internal.kafka.topic": "schemahistory.tickit",
+    "table.include.list": "crm.user",
+    "tasks.max": 1,
+    "topic.prefix": "tickit",
+    "transforms": "unwrap",
+    "transforms.unwrap.add.fields": "name,op,db,table,source.ts_ms",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    "transforms.unwrap.drop.tombstones": "true",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "value.converter": "io.apicurio.registry.utils.converter.AvroConverter",
+    "value.converter.apicurio.registry.auto-register": "true",
+    "value.converter.apicurio.registry.find-latest": "true",
+    "value.converter.apicurio.registry.url": "http://localhost:8080/apis/registry/v2"
+  }
+}

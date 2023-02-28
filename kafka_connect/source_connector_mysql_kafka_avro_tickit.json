@@ -1,0 +1,32 @@
+{
+  "name": "source_connector_mysql_kafka_avro_tickit",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "${secretManager:demo/mysql:host}",
+    "database.include.list": "ecomm",
+    "database.password": "${secretManager:demo/mysql:password}",
+    "database.port": 3306,
+    "database.server.id": 184054,
+    "database.user": "${secretManager:demo/mysql:username}",
+    "decimal.handling.mode": "double",
+    "include.schema.changes": "true",
+    "key.converter": "io.apicurio.registry.utils.converter.AvroConverter",
+    "key.converter.apicurio.registry.auto-register": "true",
+    "key.converter.apicurio.registry.find-latest": "true",
+    "key.converter.apicurio.registry.url": "http://localhost:8080/apis/registry/v2",
+    "schema.name.adjustment.mode": "avro",
+    "schema.history.internal.kafka.bootstrap.servers": "${secretManager:demo/mysql:bootstrap.servers}",
+    "schema.history.internal.kafka.topic": "schemahistory.tickit",
+    "tasks.max": 1,
+    "topic.prefix": "tickit",
+    "transforms": "unwrap",
+    "transforms.unwrap.add.fields": "name,op,db,table,source.ts_ms",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    "transforms.unwrap.drop.tombstones": "true",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "value.converter": "io.apicurio.registry.utils.converter.AvroConverter",
+    "value.converter.apicurio.registry.auto-register": "true",
+    "value.converter.apicurio.registry.find-latest": "true",
+    "value.converter.apicurio.registry.url": "http://localhost:8080/apis/registry/v2"
+  }
+}
