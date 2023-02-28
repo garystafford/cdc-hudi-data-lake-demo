@@ -1,6 +1,10 @@
 # Building Data Lakes on AWS with Kafka Connect, Debezium, Apicurio Registry, and Apache Hudi
 
-Source code for the blog post, [Building Data Lakes on AWS with Kafka Connect, Debezium, Apicurio Registry, and Apache Hudi](/)
+Source code for the blog post, [Building Data Lakes on AWS with Kafka Connect, Debezium, Apicurio Registry, and Apache Hudi](/).
+
+## Architecture
+
+![architecture](diagram.png)
 
 ## Kafka Connect Commands
 
