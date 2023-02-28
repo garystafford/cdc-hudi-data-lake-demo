@@ -1,6 +1,6 @@
 # Building Data Lakes on AWS with Kafka Connect, Debezium, Apicurio Registry, and Apache Hudi
 
-Source code for the blog post, [Building Data Lakes on AWS with Kafka Connect, Debezium, Apicurio Registry, and Apache Hudi](/).
+Source code for the blog post, [Building Data Lakes on AWS with Kafka Connect, Debezium, Apicurio Registry, and Apache Hudi]([/](https://garystafford.medium.com/building-data-lakes-on-aws-with-kafka-connect-debezium-apicurio-registry-and-apache-hudi-b4da0268dce)).
 
 ## Architecture
 
@@ -70,7 +70,7 @@ curl -s -H "Content-Type: application/json" \
 wget https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.13/3.3.2/spark-avro_2.13-3.3.2.jar
 sudo mv spark-avro_2.13-3.3.2.jar /usr/lib/spark/jars/spark-avro.jar
 
-DATA_LAKE_BUCKET=<your_data_lake_s3_bucket>
+DATA_LAKE_BUCKET="<your_data_lake_s3_bucket>"
 TARGET_TABLE="tickit.ecomm.sale"
 TARGET_TABLE="tickit.ecomm.listing"
 TARGET_TABLE="tickit.ecomm.date"
